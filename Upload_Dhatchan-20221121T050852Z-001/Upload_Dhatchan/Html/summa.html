@@ -1,0 +1,46 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+<input id="us">
+<input id="pd">
+<div id="div2">
+<br>
+<br>
+<br>
+<p>Old Content</p>
+</div>
+<button>run</button>
+</body>
+<script>
+$(document).ready(function(){
+	$("#pd").blur(function(){
+	user= $("#us").val();
+	pwd= $("#pd").val();
+	alert(user+"  "+pwd);
+  });
+});
+</script>
+</hmtl>
+ 
+ 
+ function erase()
+{
+ t=document.getElementById("con");
+ t.value="";
+}
+function ex()
+{
+ t=document.getElementById("con");
+ tag=document.createElement("p");
+ text=document.createTextNode(t.value);
+ tag.appendChild(text)
+ a=document.getElementById("div2");
+ a.appendChild(tag);
+}
+
+
+
+
+<button onclick="erase()">Clear</button>

@@ -1,0 +1,24 @@
+{% load static %} 
+<head>
+<link rel="stylesheet" href="{% static 'Css/Boot_css.css' %}" media="screen" type="text/css" />
+<link rel="stylesheet" href="{% static 'Css/Admin_Home_page.css' %}" media="screen" type="text/css" />
+</head>
+<style>
+img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
+}
+img:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}</style>
+<body style="background-image: url('/static/Images/Admin_Background.jpg')">
+<div style="margin-top: 50px;">
+<center><img src="{% static 'Images/Admin.png' %}" alt="Paris"></center>
+<center><h4 class="name" style="font-size:80px;color:#800000;">ADMIN</h4></center>
+<center><a href="/Murali/display_Staff"><button type="button" style="color: rgb(222,199, 164);" class="btn btn-primary btn-lg" >STAFF</button></a>
+	&emsp;&emsp;&emsp;
+<a href="/Murali/student"><button type="button" style="color: rgb(222,199, 164);" class="btn btn-primary btn-lg">STUDENT</button></a></center>
+</table></center></div>
+</body>

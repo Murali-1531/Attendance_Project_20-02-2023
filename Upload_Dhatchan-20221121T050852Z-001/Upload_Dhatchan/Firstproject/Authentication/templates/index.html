@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+{% load static%}
+<head>
+ <link rel="stylesheet" href="{% static 'style.css' %}" media="screen" type="text/css" />
+ <link rel="stylesheet" href="{% static 'reset.css' %}" media="screen" type="text/css" />
+  <meta charset="UTF-8">
+
+  <title>Murali - Login </title>
+</head>
+
+<body>
+<form method="POST" action="login_data" >{% csrf_token %}
+  <div class="wrap">
+		<div class="avatar">
+      <img src="{% static 'Login.jpeg' %}">
+		</div>
+		<input type="text" name="usr" placeholder="username" required  id="usr">
+		<div class="bar">
+			<i></i>
+		</div>
+		<input type="password" name="psd" placeholder="password" required id="pwd">
+		<a href="" class="forgot_link">forgot ?</a>
+		<input type="submit" value="Sign in" onclick="login_check()">
+	</div>
+</form>
+</body>
+</html>

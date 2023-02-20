@@ -1,0 +1,9 @@
+<inpui id="usr" name="Usrname">
+<script>
+function display()
+{
+alert("hi")
+user=document.getElementById("usr")
+alert(user.value);
+}
+</script> 

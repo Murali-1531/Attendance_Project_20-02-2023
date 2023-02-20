@@ -1,0 +1,77 @@
+<!--Author:Murali-->
+{% csrf_token %}
+{% load static %} 
+<head>
+  <title>Django Display Images</title>
+  <link href="{% static 'Css/Boot_css.css' %}"rel="stylesheet">
+  <script src="{% static 'Js/Jquery.js' %}"></script>
+<script src="{% static 'Js/Jquery_1.js' %}"></script>
+<script src="{% static 'Js/Jquery_2.js' %}"></script>
+  </head>
+<body style="background-color: cyan" >
+	<form action="/Murali/Staff_Mark_Attendance" method="POST">{% csrf_token %}
+	<center><b><p style="font-size:40px;color:black;left:50%"><u>STAFF DETAILS</u></p></b>
+<div class="container">
+	{% for i in Staff_det %}
+		<img style="border-radius:50%;width:200px;" src="/media/{{i.Photo}}"><br><br><br>
+<table class="table table-striped" style="width:50%;">
+      <tr>	
+		<td>User Name</td><td>{{i.User_Name}}</td></tr> 
+		<td>Staff ID</td><td>{{i.Staff_ID}}</td></tr>
+		<td>Name</td><td>{{i.Name}}</td></tr>
+		<td>Department</td><td>{{i.Department}}</td></tr>
+		<td>Phone Number</td><td>{{i.Phone_Number}}</td></tr>
+		<td>Mail ID</td><td>{{i.Mail_ID}}</td></tr>
+	  {% endfor %} 
+	</tbody>
+</table>	
+</div>
+<div >
+<h3>Students Attendance</h3>
+<table class="table table-striped" style="width:75%;">
+	    <tr>
+<td>Degree:</td><td><select class="form-select" onchange="degree()" name="Degree" id="Degree">
+        <option selected>Degree</option>
+        <option value="UG">Under Graduate(UG)</option>
+        <option value="PG">Post Graduate(PG)</option>
+      </select></td>
+ <td>Year:</td><td><select class="form-select" name="Year" id="year" >
+        <option selected>Year</option>
+        <option value="I">First Year(I)</option>
+        <option value="II">Second Year(II)</option>
+        <option id="III" value="III">Third Year(III)</option>
+      </select></td>
+ <td>Department:</td><td><select class="form-select"  name="Department" id="year">
+        <option selected>Department</option>
+        <option value="Computer Science">Computer Science</option>
+        <option value="Mathematics">Mathematics</option>
+        <option value="Chemistry">Chemistry</option>
+        <option value="Physics">Physics</option>
+        <option value="Economics">Economics</option>
+      </select></td>
+      <td>Hour:</td>
+      <td><select  class="form-select" id="hour" name="Hour" >
+  <option selected>Hour</option>
+  <option value="1 HR">1 HR</option>
+  <option value="2 HR">2 HR</option>
+  <option value="3 HR">3 HR</option>
+  <option value="4 HR">4 HR</option>
+  <option value="5 HR">5 HR</option>
+</select></td>
+<td><button type="submit" class="btn btn-info">Submit</button></td>
+  </div>
+  	</tbody>
+</table>
+</center></form>
+<script type="text/javascript">
+function degree()
+{
+a=$("#Degree").val();
+if(a=="PG"){
+$("#III").hide();
+}
+else{$("#III").show();}
+}
+</script>
+</body>
+</html>

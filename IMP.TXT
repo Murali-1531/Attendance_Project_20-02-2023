@@ -1,0 +1,175 @@
+{------JAVA-SCRIPT---------}
+<script src="https://code.jquery.com/jquery-3.6.2.js" integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
+$("#check").click(function()
+{
+s="YES";
+usr=$("#name").val();
+if(usr=="")
+{
+	$("#Name_err").html("User name should not be null");
+	$("#Name_err").css("color","red");
+	s="NO";
+}
+else
+{
+	$("#Name_err").hide();
+	s="YES";
+}
+pwd=$("#password").val();
+if(pwd=="")
+{
+	$("#Pass_err").html("Password should not be null");
+	$("#Pass_err").css("color","red");
+	s="NO";
+}
+else
+{
+	$("#Pass_err").hide();
+	s="YES";
+}	
+if(s=="YES")
+{
+usr_name=$("#name").val();
+usr_psd=$("#password").val();
+$.ajax({
+url:"Murali/login",
+data:{usr:usr_name,psd:usr_psd,csrfmiddlewaretoken:'{{ csrf_token }}'},
+type:"post",success:function(res){}});
+}
+})
+</script>
+
+
+$.ajax({url:"Murali/forgot_password",
+    type: "POST",  // http method
+    data: { myData: $("#name").val(),csrfmiddlewaretoken:'{{ csrf_token }}' },  // data to submit
+       
+});
+
+
+
+function New_record()
+{
+ id = $("#colFormLabelSm").val();
+ name = $("#colFormLabel").val();
+ phone = $("#colFormLabelLg").val();
+ t1="<button type='button' class='btn btn-primary' onclick='edit()' data-toggle='modal' data-target='#edit_data'>Edit </butto"
+ del="<button  id ='{{i.eid}}' onclick='delete_record(this.id)' type=;'button' class='btn btn-danger'>Remove</button>"
+ $.ajax({
+            type: "GET",
+            contenttype: "application/json; charset=utf-8",
+            url: "New_record",
+            data: {
+                  epid:id,
+                  epname:name,
+                  ephone:phone
+                },
+            datatype: "json",
+            success: function (result) {
+                //do something
+                alert("SUCCESS = " + result);
+                console.log(result);
+                $("#db_table").DataTable().row.add([id,name,phone,t1,del]).draw();
+                $('#myModal').on('hidden.bs.modal', function (e) {
+                $(this).find("input[type=text]").val('').end();}) },
+            error: function (xmlhttprequest, textstatus, errorthrown) {
+                alert(" conection to the server failed ");
+                console.log("error: " + errorthrown);}
+        });
+}
+
+{-------VIEWS-----}
+
+
+	t=datetime.datetime.now() + datetime.timedelta(minutes=2).strftime("%H:%M")		
+    			schedule.every().day.at(t).do(lambda:job(data))
+    			#while True:
+	
+
+	DOB=models.DateTimeField()
+	Gender= models.CharField(max_length=50)
+	Phone-Number=models.IntegerField(unique=True)
+	Mail_ID=models.EmailField(max_length = 254)
+	Photo=models.ImageField(upload_to ='uploads/')
+	
+
+def upload(request): 
+    if request.method == 'POST' and request.FILES['upload']:
+        upload = request.FILES['upload']
+        print(upload.name)
+        fss = FileSystemStorage()
+        file = fss.save('images/Staff_Images/'+upload.name, upload)
+        file_url = fss.url(file)
+        staff_id=request.POST.get("Staff ID")
+        staff_name=request.POST.get("Staff Name")
+        staff_dep=request.POST.get("Staff Department")
+        staff_Mail=request.POST.get("Staff Mail_ID")
+        print(staff_Mail)
+        staff=Staff_Details(Staff_ID=staff_id,Name=staff_name,
+        Department=staff_dep,Mail_ID=staff_Mail,Photo='images/Staff_Images/'+upload.name)
+        staff.save()	
+        return render(request, 'upload.html', {'file_url': file_url})
+    return render(request, 'upload.html') 
+    
+    
+    def image_request(request):  
+    if request.method == 'POST':  
+        form = UserImage(request.POST, request.FILES)  
+        if form.is_valid():  
+            form.save()  
+            # Getting the current instance object to display in the template  
+            img_object = form.instance  
+            return render(request, 'image_form.html', {'form': form, 'img_obj': img_object})  
+    else:  
+        form = UserImage()  
+  
+    return render(request, 'image_form.html', {'form': form}) 
+    
+    
+    
+    a=list(User.objects.all().values("username"))
+		l=[]
+		for i in range(len(a)):
+			l.append(a[i].get("username"))
+		context={'title': l}	
+		print(l)
+		
+		
+		
+	#schedule.run_pending()    
+ #Delete the Row in otp table
+	def job(usr_name):
+    		Otp_tb=OTP.objects.get(User_Name=usr_name)
+    		Otp_tb.delete()       			
+		
+		
+		
+		
+		
+{-------HTML-----}
+        		<!--See Image Uploaded-->        
+          <div class="row">
+            {% if file_url %}
+            <h2 class="my-4">Photo Uploaded </h2>
+            <div class="col-lg-4 col-md-6 col-sm-12 pb-4">
+              <img src="{{ file_url }}" class="img-fluid">
+              <br>
+              <a class="btn btn-dark my-4" href="/">Return to Homepage</a>
+            {% else %}
+            
+            {% endif %}
+          </div>
+
+        </div>
+
+{------------------CSS-----------------------}   
+.login-box a:hover {
+  background: #03e9f4;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #03e9f4,
+              0 0 25px #03e9f4,
+              0 0 50px #03e9f4,
+              0 0 100px #03e9f4;
+}
+

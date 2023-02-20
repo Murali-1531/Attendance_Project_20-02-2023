@@ -1,0 +1,46 @@
+Django Admin Username:root
+Django Admin Password:root
+
+
+127.0.0.1:8000
+Dhatchan-01
+W-bPx2Wh2Aw$sr4
+127.0.0.1:8000
+Dhatchan-02
+N3LD6C!y-*e/w2w
+127.0.0.1:8000
+Dhatchan-03
+*4UY+dT9skgNpLz
+127.0.0.1:8000
+Dhatchan-04
+RpQ6XatRmsek_3R
+127.0.0.1:8000
+Murali
+Murali1531
+127.0.0.1:8000
+Muthu Krish
+Muthu Krish
+127.0.0.1:8000
+Prem
+Muthu Krish
+127.0.0.1:8000
+ram
+MkMm.A@-@Q2Z6GW
+127.0.0.1:9700
+Dhatchan-01
+4bSRm/Xh$54G*$s
+
+
+
+GitHub-Token/Password:-
+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
+
+GitHub-link:-
+https://github.com/Murali-1531/Attendance_Project.git
+
+
+Gamil_id:- alok.ff.1531@gmail.com
+Gamil_Password:- Alok-1531-2001
+
+
+

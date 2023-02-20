@@ -1,0 +1,231 @@
+<!--Author:Murali-->
+<head> 
+<link rel="stylesheet"type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<center><h1 style="color:red">Employee Table</h1>
+<table id="db_table" >
+<thead>
+<tr>
+<th>Emp-ID</th>
+<th>Emp-Name</th>
+<th>Emp-Phone</th>
+<th>Edit</th>
+<th>Remove</th>
+</tr>
+</thead>
+<tbody>
+{% for i in My_emp %}
+<tr id={{i.eid}}>
+<td>{{i.eid}}</td>
+<td>{{i.ename}}</td>
+<td>{{i.ephone}}</td>
+<td>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" onclick="edit()" data-bs-target="#EditModal">
+    Edit
+  </button>
+</td>
+<td><button id={{i.eid}} onclick="delete_record(this.id)" type="button" class="btn btn-danger">Remove</button></td>
+</tr>
+{%endfor%}
+</tbody>
+<tbody id="tbody">
+</tbody>
+</table>
+<br>
+<br>
+</center>
+<script
+type="text/javascript"
+charset="utf8"
+src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"
+></script>
+<script
+type="text/javascript"
+charset="utf8"
+src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+<script>
+$(function() {
+$("#db_table").DataTable();
+});
+</script>
+<head> 
+<link rel="stylesheet"type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<div class="container mt-3">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+    Add Record
+  </button>
+</div>
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title" style="color:blue;">Enter The Record</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="mb-3">
+  <div class="row mb-3">
+  <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">ID:</label>
+  <div class="col-sm-10">
+   <input type="text" class="form-control form-control-sm" name="epid" id="colFormLabelSm" placeholder="Employee ID" >
+  </div>
+</div>
+<div class="row mb-3">
+  <label for="colFormLabel" class="col-sm-2 col-form-label">Name:</label>
+  <div class="col-sm-10">
+    <input type="text" class="form-control" name="epname" id="colFormLabel" placeholder="Employee Name">
+  </div>
+</div>
+<div class="row">
+  <label for="colFormLabelLg" class="col-sm-2 col-form-label"> Phone Number:</label>
+  <div class="col-sm-10">
+    <input type="text" class="form-control form-control-lg" name="ephone" id="colFormLabelLg" placeholder="Employee Number" maxlength="10">
+  </div>
+</div>
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="addBtn" onclick="New_record()">Add</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://www.ksia.or.kr/plugin/DataTables-1.10.15/media/js/jquery.dataTables.js"></script>
+<!--EDIT-MODAL-->
+<div class="modal" id='EditModal' tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" style="color:green;">Edit Employee Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+             <div class="modal-body">
+        <div class="mb-3">
+  <div class="row mb-3">
+  <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">ID:</label>
+  <div class="col-sm-10">
+   <input type="text" class="form-control form-control-sm" name="name" id="Editid" placeholder="Employee ID" >
+  </div>
+</div>
+<div class="row mb-3">
+  <label for="colFormLabel" class="col-sm-2 col-form-label">Name:</label>
+  <div class="col-sm-10">
+    <input type="text" class="form-control" name="epname" id="Editname" placeholder="Employee Name">
+  </div>
+</div>
+<div class="row">
+  <label for="colFormLabelLg" class="col-sm-2 col-form-label"> Phone Number:</label>
+  <div class="col-sm-10">
+    <input type="text" class="form-control form-control-lg" name="ephone" id="Editphonenumber" placeholder="Employee Number" maxlength="10" >
+  </div> 
+</div>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="save()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+function New_record()
+{
+ id = $("#colFormLabelSm").val();
+ name = $("#colFormLabel").val();
+ phone = $("#colFormLabelLg").val();
+ t1="<button type='button' class='btn btn-primary' onclick='edit()' data-toggle='modal' data-target='#edit_data'>Edit </butto"
+ del="<button  id ='{{i.eid}}' onclick='delete_record(this.id)' type=;'button' class='btn btn-danger'>Remove</button>"
+ $.ajax({
+            type: "GET",
+            contenttype: "application/json; charset=utf-8",
+            url: "New_record",
+            data: {
+                  epid:id,
+                  epname:name,
+                  ephone:phone
+                },
+            datatype: "json",
+            success: function (result) {
+                //do something
+                alert("SUCCESS = " + result);
+                console.log(result);
+                $("#db_table").DataTable().row.add([id,name,phone,t1,del]).draw();
+                $('#myModal').on('hidden.bs.modal', function (e) {
+                $(this).find("input[type=text]").val('').end();}) },
+            error: function (xmlhttprequest, textstatus, errorthrown) {
+                alert(" conection to the server failed ");
+                console.log("error: " + errorthrown);}
+        });
+}
+</script>
+<script>
+function edit()
+{
+var table = $('#db_table').DataTable();
+
+$('tbody').on( 'click', 'tr', function () {
+    $("#Editid").val(table.row( this ).data()[0]);
+    $("#Editname").val(table.row( this ).data()[1]);
+    $("#Editphonenumber").val(table.row( this ).data()[2]);
+    
+} );
+}
+</script>
+<script>
+function delete_record(id)
+{
+ var table = $('#db_table').DataTable();
+
+ //id=$(this).attr('id')
+ alert(id);
+ $.ajax({
+            type: "GET",
+            contenttype: "application/json; charset=utf-8",
+            url: "delete/"+id,
+            success:function (result) {
+                //do something
+                alert("SUCCESS = " + result);
+                console.log(result);
+                }
+            
+       }); 
+}
+</script>
+<script>
+function save()
+{
+ id = $("#Editid").val();
+ name = $("#Editname").val();
+ phone = $("#Editphonenumber").val();
+ $.ajax({
+            type: "GET",
+            contenttype: "application/json; charset=utf-8",
+            url: "update/"+id,
+            data: {
+                  epname:name,
+                  ephone:phone
+                },
+          
+       }); 
+}
+</script>
+

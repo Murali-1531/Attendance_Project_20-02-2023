@@ -1,0 +1,59 @@
+{% load static%}
+{% block content %}  
+</head>
+<link rel="stylesheet" href="{% static 'Staff_Entry_Details.css' %}" media="screen" type="text/css" />
+</head>
+<div class="container bg-image">
+            <header>
+                <div class="head-title">
+                    <h1 id="title">St. Xavier's CollegeCollege in Tirunelveli, Tamil Nadu</h1>
+                    <p id="description">STAFF DETAILS</p>
+                </div>
+            </header>
+            <main class="main-content">
+                <form method="POST" id="survey-form" action="upload">{% csrf_token %}
+                    <div class="user-details">
+                        <div class="form-content text-form">
+                            <label  class="details" for="name" id="name-label"> Staff ID:</label>
+                            <input type="text" id="name" name="Staff ID" placeholder="Enter your ID" required="">
+                        </div>
+                        <div class="form-content text-form">
+                            <label class="details" for="lastname" id="lastname-label"> Staff Name:</label>
+                            <input type="text" id="lastname" name="Staff Name" placeholder="Enter your name" required="">
+                        </div>
+                        <div class="form-content text-form">
+                            <label class="details" for="lastname" id="lastname-label">Staff Department :</label>
+                            <input type="text" id="lastname" name="Staff Department" placeholder="Enter your Department " required="">
+                        </div>
+                        <div class="form-content text-form">
+                            <label class="details" for="email" id="email-label">Email</label>
+                            <input type="email" id="email" name="email" placeholder="example@gmail.com" pattern=".+@gmail.com" required="">
+                        </div>             
+                       <div class="form-content text-form">
+                            <label class="details" for="email" id="email-label">Select Photo</label>
+                            <input type="file" id="file" name="upload" accept="image/*">
+                        </div>  
+                        <div class="form-content question-form">
+                            <button id="submit" class="submit-buttom" type="submit">Add</button>
+                        </div>
+                    </div>
+                </form>
+            </main>
+            <footer class="end-content">
+                <p class="creator">Proudly made by <a href="https://twitter.com/GregoriM04">Gregori Martínez</a>.</p>
+            </footer>
+        </div>
+        <!--See Image Uploaded-->     
+          <div class="row">
+            {% if file_url %}
+            <div class="col-lg-4 col-md-6 col-sm-12 pb-4">
+              <img src="{{ file_url }}" class="img-fluid">
+              <br>
+              <a class="btn btn-dark my-4" href="/">Return to Homepage</a>
+            {% else %}       
+            {% endif %}
+          </div>
+
+        </div>
+        
+{% endblock %}

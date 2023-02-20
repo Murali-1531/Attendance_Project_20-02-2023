@@ -1,0 +1,31 @@
+.cl1 h1{
+	background-color: #FF0000;
+}
+.cl1 p{
+	font-size: 20px;
+	color: #FF0000 ;
+	text-decoration: none;
+	left: 193px;
+	top: -36px;
+}
+.cl2 h1{
+	background-color: #FFA500;
+}
+.cl2 p{
+	font-size: 20px;
+	color:#808000 ;
+	text-decoration: none;
+	left: 193px;
+	top: -36px;
+}
+.cl3 h1{
+	background-color: #FFFF00;
+}
+.cl3 p{
+	font-size: 20px;
+	color: #008000 ;
+	text-decoration: none;
+	left: 193px;
+	top: -36px;
+}
+

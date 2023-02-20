@@ -1,0 +1,93 @@
+<!--Author:Murali-->
+{% load static %} 
+<head>
+<link href="{% static 'Css/Boot_css.css' %}"rel="stylesheet">
+</head>
+<script src="{% static 'Js/Boot_2_js.js' %}"></script>
+<script src="{% static 'Js/Boot_1_js.js' %}"></script>
+<script src="{% static 'Js/Jquery.js' %}"></script>
+<body>
+<form action="/Murali/display_student" method="POST">{% csrf_token %}
+<center><h1 style="color:red">Select The Details</h1>
+<style>
+table, th, td {
+  padding:5px;
+  border: 1px solid black;
+  text-align:center;
+}
+</style>
+<table border="1">
+<tr>
+<th>Select The Degree</th>
+<th>Select The Year</th>
+<th>Select The Department</th></tr>
+<tr>
+<td><button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"  data-bs-toggle="dropdown" aria-expanded="false">
+    UG/PG
+  </button>
+  <input type="hidden" name="Grad" id="Grad" value="">
+  <ul name="Grad_li" class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+    <li class="dropdown-item active">--SELECT--</li>
+    <li id="Grad_li_ug" onclick="Value(this.id)" class="dropdown-item">Under Graduate(UG)</li>
+    <li id="Grad_li_pg" onclick="Value(this.id)" class="dropdown-item">Post Graduate(PG)</li>
+  </ul></td>
+<td> <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+    Year
+  </button>
+   <input type="hidden" name="Year"  id="Year"value="">
+  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+    <li  class="dropdown-item active">--SELECT--</li>
+    <li id="Year_li_1" onclick="Value(this.id)" class="dropdown-item">First Year(I)</li>
+    <li id="Year_li_2" onclick="Value(this.id)" 
+    class="dropdown-item">Second Year(II)</li>
+    <li id="Year_li_3" onclick="Value(this.id)" class="dropdown-item">Third Year(III)</li>
+  </ul></td>
+<td><button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+    Departments
+  </button>
+   <input type="hidden" name="Dep" id="Dep" value="">
+  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+    <li class="dropdown-item active"><a  >--SELECT--</li>
+    <li id="Dep_li_cs" onclick="Value(this.id)" class="dropdown-item">Computer Science</li>
+    <li id="Dep_li_mat" onclick="Value(this.id)"class="dropdown-item">Mathematics</li>
+    <li id="Dep_li_phy" onclick="Value(this.id)" class="dropdown-item">Physics</li>
+    <li id="Dep_li_chem" onclick="Value(this.id)"  class="dropdown-item">Chemistry</li>
+    <li id="Dep_li_eco" onclick="Value(this.id)"  class="dropdown-item">Economics</li>
+  </ul></td>
+  </tr></center>
+</table>
+<center><button  style="margin-right:50px;margin-top:200px" type="submit" class="btn btn-outline-primary">Submit</button></center>
+</form>
+</body>
+<script>
+function Value(id)
+{
+if(id[0]=="G")
+{
+$("#Grad").val($("#"+id).text());
+if($("#"+id).text()=="Post Graduate(PG)")
+{
+$("#Year_li_3").hide();
+}
+else
+{
+$("#Year_li_3").show();
+}
+}
+else if(id[0]=="Y"){$("#Year").val($("#"+id).text());}
+else{$("#Dep").val($("#"+id).text());}
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+

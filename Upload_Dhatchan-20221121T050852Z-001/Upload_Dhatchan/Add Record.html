@@ -1,0 +1,14 @@
+<html>
+<body>
+<center>
+<h>ADD RECORD IN TABLE </h></center>
+<form action="AddRecord" method=GET>
+{% csrf_token %}
+Enter The Employee ID:<input name="eid"><br><br>
+Enter The Employee Name:<input name="ename"><br><br>
+Enter The Employee Phone Number:<input name="ephone">
+<br><br>
+<input type="submit" value="ADD">
+</form>
+</body>
+</html>
